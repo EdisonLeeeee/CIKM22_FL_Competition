@@ -6,6 +6,7 @@ Team name: GTML-GEAR
 
 - To run the code:
 ```sh
+python setup.py install
 python federatedscope/main.py --cfg federatedscope/gfl/baseline/fedavg_gin_minibatch_on_cikmcup.yaml --client_cfg federatedscope/gfl/baseline/fedavg_gin_minibatch_on_cikmcup_per_client.yaml
 ```
 

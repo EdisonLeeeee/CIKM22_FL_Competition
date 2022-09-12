@@ -16,7 +16,7 @@ for client_id in range(1, 14):
     print(f"client={client_id}, task={task_type}")
     y_preds = 0.
     n = 0
-    counts = [5, 6]
+    counts = [0, 1, 2, 3, 4]
     for count in counts:
         file_name = f"client_{client_id}_{task_type}_{count}.pt"
         pred_path = os.path.join(pred_dir, file_name)

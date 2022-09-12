@@ -6,7 +6,7 @@ Team name: **GTML-GEAR**, Final Score: **55.2703**
 
 # Requirements
 
-+ Python 3.9 (lower version should be available, with necessary modification on `setup.py`)
++ Python 3.9 (lower version with necessary modifications on `setup.py` should be available)
 + Install PyTorch 1.12 from [here](https://pytorch.org/get-started/locally/)
 + Install PyG 2.1.0 and its dependencies from [here](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html)
 + Install the basic environments: `python setup.py install`
@@ -30,18 +30,17 @@ Our solution is completely based on the federated learning framework [FederatedS
 <p align="center"> <img src="imgs/gnn.png" /> <p align="center">Figure 1. Algorithm framework of GNN model.</p>
 
 
-
 - Brief introduction of the developed algorithm:
 
 > 1. The algorithm framework of adopted GNN model is shown in Figure 1
 > 2. The hidden layer dimension is set to `512`, and the number of local updates is `10` epochs (except client9, 10, and 13, which are set to `1`).
 > 3. We add `BatchNorm` layer in the GNN_Net_Graph before classification
 > 4. We embed the `edge_attr` of the graph data and adopt the `GINEConv` layer to encode the graph data
-> 5. We apply sum pooling (`global_add_pool`) to the pooling layer to make the model better distinguish between graph structures
+> 5. We apply sum pooling (`global_add_pool`) with gradient clip (`2.0`) to the pooling layer to make the model better distinguish between graph structures
 > 6. We use Jumping Knowledge attention in the GNN model to adaptively capture information from multi-hop neighbors
 > 7. We set the dropout rate to `0` to better improve the performance of the regression task.
-> 8. We record the best performance of the model on the validation set in each client, and save the best parameters for prediction.
-> 9. Finally, we incorporate validation set data during training to improve our score.
+> 8. We incorporate validation set data during training to improve our score.
+> 9. Finally, we record the best performance (`val_imp_ratio`) of the model for each client during training, and save the best parameters for prediction.
 
 ## Federated Learning Algorithm
 
